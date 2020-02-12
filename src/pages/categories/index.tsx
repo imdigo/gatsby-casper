@@ -19,41 +19,38 @@ import _ from "lodash";
  * TODO: Prettify data using lodash.
  */
 
-interface TagPageProps {
+interface CategoryPageProps {
   data: {
-    countData: {
-      totalCount: number;
-    };
-    tagsData: {
+    categoriesData: {
       edges: Array<{
         node: PageContext;
       }>;
-    }
+    };
   };
 }
 
-const TagPage: React.FC<TagPageProps> = props => {
-  const tags: string[] = _.uniq(
+const CategoryPage: React.FC<CategoryPageProps> = props => {
+  const categories: string[] = _.uniq(
     _.flatten(
-      props.data.tagsData.edges.map(edge => {
-        return _.castArray(_.get(edge, 'node.frontmatter.tags', []));
+      props.data.categoriesData.edges.map(edge => {
+        return _.castArray(_.get(edge, 'node.frontmatter.category', []));
       }),
     ),
   );
-  tags.sort(function (a, b) {
+  categories.sort(function (a, b) {
     return a.toLowerCase().localeCompare(b.toLowerCase());
   });
   var tagInfo = new Object();
-  tags.forEach(function(tag) {
+  categories.forEach(function(category) {
     var count = 0;
     // Find posts whose tag include argument.
-    props.data.tagsData.edges.forEach(function(edge) {
-      const arr = _.castArray(_.get(edge, 'node.frontmatter.tags', []));
-      if (arr.indexOf(tag) != -1) {
+    props.data.categoriesData.edges.forEach(function(edge) {
+      const arr = _.castArray(_.get(edge, 'node.frontmatter.category', []));
+      if (arr.indexOf(category) != -1) {
         count++;
       }
     });
-    (tagInfo as any)[tag] = count;
+    (tagInfo as any)[category] = count;
   });
 
   return (
@@ -63,9 +60,9 @@ const TagPage: React.FC<TagPageProps> = props => {
           <div css={inner}>
             <SiteNav isHome={false} />
             <SiteHeaderContent>
-              <SiteTitle>All Tags</SiteTitle>
+              <SiteTitle>All Categories</SiteTitle>
               <SiteDescription>
-                  We have {tags.length} tags here!
+                  We have {categories.length} categories here!
               </SiteDescription>
             </SiteHeaderContent>
           </div>
@@ -74,9 +71,9 @@ const TagPage: React.FC<TagPageProps> = props => {
           <div css={inner}>
             <TagDiv>
               <div css={TagFeed}>
-                {tags.map((tag, index) => (
-                  <Link css={TagBlock} to={`/tags/${_.kebabCase(tag)}/`} key={index}>
-                    # {tag}({(tagInfo as any)[tag]})
+                {categories.map((category, index) => (
+                  <Link css={TagBlock} to={`/categories/${_.kebabCase(category)}/`} key={index}>
+                    # {category}({(tagInfo as any)[category]})
                   </Link>
                 ))}
               </div>
@@ -90,15 +87,15 @@ const TagPage: React.FC<TagPageProps> = props => {
   );
 };
 
-export default TagPage;
+export default CategoryPage;
 
 export const pageQuery = graphql`
   query {
-    tagsData: allMarkdownRemark {
+    categoriesData: allMarkdownRemark {
       edges {
         node {
           frontmatter {
-            tags
+            category
           }
         }
       }

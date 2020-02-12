@@ -14,9 +14,6 @@ import _ from "lodash";
 
 interface TagPageProps {
   data: {
-    countData: {
-      totalCount: number;
-    };
     tagsData: {
       edges: Array<{
         node: PageContext;
