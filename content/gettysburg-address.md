@@ -3,7 +3,7 @@ title: "Gettysburg Address"
 description: descript Ex
 author: Another Author
 tags: ["wtf"]
-category: ["Cat1"]
+category: ["Cat1", "Speeches"]
 image: img/demo1.jpg
 date: "1863-11-19T10:00:00.000Z"
 draft: false

@@ -4,7 +4,7 @@ title: "The Purpose of Education"
 description: descript Ex
 author: Ghost
 tags: ["speeches"]
-category: ["Cat1"]
+category: ["Cat1", "Speeches"]
 image: img/demo4.jpg
 date: "2012-08-20T15:11:55.000Z"
 draft: false

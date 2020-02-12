@@ -4,7 +4,7 @@ title: "Welcome to Ghost"
 description: descript Ex
 author: Ghost
 tags: ["Getting Started"]
-category: ["Cat1"]
+category: ["Cat1", "Ghost"]
 image: img/welcome-to-ghost.jpg
 date: "2018-05-06T23:46:37.121Z"
 draft: false

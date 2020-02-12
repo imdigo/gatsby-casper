@@ -4,7 +4,7 @@ title: "Using The Ghost Editor"
 description: descript Ex
 author: Ghost
 tags: ["Getting Started"]
-category: ["Cat1"]
+category: ["Cat1", "Ghost"]
 image: img/writing.jpg
 date: "2015-02-02T23:46:37.121Z"
 draft: false
